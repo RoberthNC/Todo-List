@@ -23,23 +23,25 @@ const mostrarMenu = () => {
         });
     
         readline.question("Seleccione una opción: ", (opt)=>{
-            resolve(opt)
             readline.close();
+            resolve(opt)
         });
     });
 }
 
 const pausa = () => {
 
-    const readline = require("readline").createInterface({
-        input:process.stdin,
-        output:process.stdout
-    })
-
-    readline.question(`Presione ${"ENTER".blue} para continuar`,()=>{
-        readline.close();
+    return new Promise((resolve) => {
+        const readline = require("readline").createInterface({
+            input:process.stdin,
+            output:process.stdout
+        })
+    
+        readline.question(`Presione ${"ENTER".blue} para continuar`,()=>{
+            readline.close();
+            resolve();
+        });
     });
-
 }
 
 module.exports = {
